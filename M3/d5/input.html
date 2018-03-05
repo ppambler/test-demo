@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.button没有写type会自动升级为submit,而且直接回车就能提交，
+        即不写type为button的button,此button就是submit，写了就说明
+        这个form无法提交
+    -->
+    <form action="xxx" method="post">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>没有type的提交?</button>
+    </form>
+
+    <form action="xxx" method="post">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <button type="button">有type为button的提交？</button>
+    </form>
+    <!-- 2.submit提交表单 -->
+    <form action="xxx" method="post">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <!-- 这样只是个普通的button -->
+            <input type="button" value="button">
+            <!-- 要想提交，需要这样：同样可以回车提交 -->
+            <input type="submit" value="提交">
+    </form>
+
+    <form action="users" method="get">
+    <!-- checkbox -->
+    <!-- input的id和label的for是一对的 -->
+    <input type="checkbox" name="loveme" id="loveme"><label for="loveme">爱我</label>
+    <!-- 一种变形，老司机正确的抠脚姿势，不知道为啥会这样，写多了就发现可以这样写了 
+        之前的label和input是兄弟关系，前者需要for,后者需要id
+        现今是父子关系，而且label不用for了，input也不用id了
+        建议以后用下面这种方式
+    -->
+    <label>用户名:<input type="text" name="username"></label>
+    <!-- 不给上value属性，选中就是个on值，给上value属性，空字符串就长这样了&fruit=&…… -->
+    <!-- 不管是单选还是多选，只要写上，就把name和value写上，不然，你这数据不提交给服务器，有啥意义呢？ -->
+    喜欢的水果：
+    <label><input type="checkbox" name="fruit" value="orange">橙子</label>
+    <label><input type="checkbox" name="fruit" value="apple">苹果</label>
+    <label><input type="checkbox" name="fruit" value="">桃子</label>
+    <!-- radio -->
+    <!-- 单选框给上相同的name,这里value值是给服务器的 -->
+    爱我吗？
+    <label><input type="radio" name="loveme" value="yes">yes</label>
+    <label><input type="radio" name="loveme" value="no">no</label>
+    
+
+    <!-- select -->
+    <!-- multiple决定多选，用户可按Ctrl+鼠标点击多选 -->
+    <select name="group" id="" multiple>
+        <!-- 不选哪个组 -->
+        <option value="">-</option>
+        <option value="1">第一组</option>
+        <option value="2">第二组</option>
+        <!-- disabled:不可选，即组员满了 -->
+        <option value="3" disabled>第三组</option>
+        <!-- selected:默认选中 -->
+        <option value="4">第四组</option>
+    </select>
+    <input type="submit" value="提交">
+
+
+    <!-- textarea -->
+    <!-- resize:解决默认用户会改变文本框的大小所造成bug(如影响同处一行的元素)
+        最好使用CSS设置文本框的大小，应为cols会不准哦
+        不用写value属性，value的值就是用户输入的值
+    -->
+    <textarea name="hobby" id="" style="resize:none; width:500px; height:50px" 
+    cols="30" rows="10"></textarea>
+    </form>
+</body>
+</html>

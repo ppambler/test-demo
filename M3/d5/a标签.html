@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- a标签的download属性,这里下载的是http://qq.com这个页面 -->
+    <a href="http://qq.com" download>下载</a>
+    <!-- 另外一种下载方式，浏览器以下载的方式接收这个请求，而不是在页面中展示
+        浏览器根据响应头Content-Type: application/octet-stream
+        下载这个文件到本地 -->
+
+        <br>
+    <!-- 测试href属性 -->
+    <!-- 没有http协议那么它就是个文件而已，是个相对当前目录的文件而已
+        不要以为这个是域名呀，a.txt,qq.com
+    -->
+    <!-- 第一种写法没有http:// -->
+    <a href="qq.com">qq.com</a>
+    <!-- 这种写法是正确的，表示我要开开一个网页，它是http协议的，它的是域名是qq.com-->
+    <!-- 第二种写法：有http:// -->
+    <a href="http://qq.com">http://qq.com</a>
+    <!-- 第三种写法：有https:// ,只要网址支持有s就行-->
+    <!-- 第四种写法：直接//qq.com，表示当前文件是什么协议就是什么协议，
+        如本地打开当前网页,地址开头为ftp协议，用http协议（本机开启http服务）打开就能跳转到qq的页面
+        总而言之，就是无协议地址，或者说是自动继承协议
+     -->
+    <a href="//qq.com">//qq.com</a>   
+    <!-- 如何改为http协议，
+        一是上传到github;
+        二是下载一个小工具http-server（跟之前写的server.js一样，不用自己写了）
+     -->
+
+     <!-- 5.直接跳转到当前目录的某个文件 -->
+     <a href="xxx.html">xxx.html</a>
+     <!-- 6.添加锚点，直接加到当前页面的地址的尾巴里去 -->
+     <a href="#hhsdiai">#hhsdiai</a>
+     <!-- 7.添家参数，尾巴加上参数发起一个Get请求 ;与锚点的区别在于它（包括其余的几种值,伪协议不算）是发起请求的，而锚点是
+        页面内的跳转
+    -->
+     <a href="?name=hello">name=hello</a>
+
+     <!-- 8.伪协议，它不是个url,这是历史遗留问题，当时想点一下就执行一个js 。为何叫伪？
+        http:  ==>   javascript:
+        -->
+     <a href="javascript: alert(666);">javascript: alert(666);</a>
+        <!-- 用法: 奇葩需求之点击链接什么都不做，而之前常写的#会让页面动一下，而以下这种写法会
+            风平浪静
+            不写href不行吗？不行，它会变成个span，这就不语义化了
+            那我空值不行吗？也不行，会对自身发起请求
+            添加分号是什么都不做就结束了
+        -->
+        <a href="javacript:;">javacript:;</a>
+
+</body>
+</html>

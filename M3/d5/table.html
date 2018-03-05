@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- table -->
+    <!-- 1.表有表头，表头不是用来写数据的 -->
+    <!--  以下是table的完整用法-->
+    <!-- colgroup用了控制每一列的宽和背景色，给上height无效 -->
+    <!-- 不写thead,那么都在tbody里,不写tfoot就按顺序显示，浏览器可
+        不知道谁是头和尾，总之tbody不管写不写，浏览器都不会加上
+    -->
+    <table border="1">
+        <colgroup>
+            <col width=100>
+            <col bgcolor=red width=300>
+            <col width=200>
+            <col width=100>
+        </colgroup>
+        <!-- <thead> -->
+            <tr>
+                <th>项目</th>
+                <th>姓名</th>
+                <th>班级</th>
+                <th>分数</th>
+            </tr>
+        <!-- </thead> -->
+
+        <!-- <tbody> -->
+            <tr>
+                <th></th>
+                <td>小明</td>
+                <td>1</td>
+                <td>94</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>小红</td>
+                <td>2</td>
+                <td>96</td>
+            </tr>
+            <tr>
+                <th>平均分</th>
+                <td></td>
+                <td></td>
+                <td>95</td>
+            </tr>
+        <!-- </tbody> -->
+        <tfoot>
+            <tr>
+                <th>总分</th>
+                <td></td>
+                <td></td>
+                <td>190</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

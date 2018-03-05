@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- GET获取这个页面而POST则是上传 -->
+    <a href="index2.html">发的是GET请求</a>
+    <!-- 1.form里面没有提交按钮，就无法提交这个form,除非你用JS -->
+    <!-- 不添加method='post'默认是GET,可以一般都会添加为post -->
+    <!-- 2.name值是应用于第4部分的key;users只是个提交路径啊.用户除了用form这种方式上传内容，没有其它方式了 -->
+    <form action="users?zzz=3" method="post">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <input type="submit" value="提交">
+    </form>
+    <!-- 3.a和form是对应的，form同样有target属性，跟a的target一致，可用在frame里 -->
+</body>
+</html>
