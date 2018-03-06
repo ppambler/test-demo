@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 第二种方式（内部样式）:这样写解决了内联样式的写法使得标签显得过长问题 */
+        body {
+            background: grey;
+        }
+    </style>
+
+    <!-- 第3种方式(引入外部样式)：解决了第二方式写得多占很多行的问题 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 这里rel是relationship之意，表示这个link和当前文档是什么关系，即stylesheet -->
+    <!-- "这个link表示style.css是当前文档的样式表" -->
+    <!-- 而CSS就是一种stylesheet -->
+</head>
+<body bgcolor='grey'>
+    <!-- 1.没有CSS之前的HTML如何添加样式？ -->
+    <!-- 文字居中+字体颜色更改 -->
+    <p><center><font color='red'>Hello!world</font></center></p>
+
+    <!-- 2.如何通过CSS实现上面的样式？ -->
+    <!-- 直接给个Style属性，然后给上样式值，这就是第一种内联样式 -->
+    <!-- 有标签才有属性 -->
+    <p style="text-align:center; color:red;">Hello！World</p>
+
+     <p class="three">第三种方式，你会看到变黄色</p>
+
+     <p class="four">第四种方式，你会看到变黄绿色</p>
+</body>
+</html>
