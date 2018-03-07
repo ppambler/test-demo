@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a {
+            font-size: 12px;
+            padding: 5px 0 5px 0;
+            border-bottom: 3px solid transparent;
+            text-decoration: none;
+            margin: 5px 0 5px 0;
+        }
+        a:hover {
+            border-bottom: 3px solid red;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 为啥a的display:inline,竟然可以对其设置垂直方向上的padding -->
+    <!-- 那只是外观上的显示，其实不影响布局，即其它元素可占位看似撑起来的padding -->
+    <!-- inline元素确实可以设置垂直方向的padding和margin值，
+        但是inline元素的margin和padding的垂直方向上不产生边距效果，即不影响布局。 -->
+    <!-- 不管怎样记住这句话即可：“行内元素的纵向padding和margin都是不考虑的，这是css规范定义的。” -->
+    <ul>
+        <li><a href="#">Hello!World</a></li>
+    </ul>
+</body>
+</html>
