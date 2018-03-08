@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            /* 加上border是为了调试 */
+            border: 1px solid red;
+        }
+        div {
+            border: 1px solid yellowgreen;
+            /* 给个宽度证明块级元素不是撞墙才另起一行的，而是天生如此 ，这是css规定的*/
+            widows: 100px;
+            /* 让块级元素水平流动 */
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 文档流 -->
+    <!-- 1.内联元素：水平流动（从左往右），一行流着流着撞墙（宽度不够）了，
+        就另起一行，呈“之”型的流动方式（如此循环下去，直到没水了） -->
+    <span>撞墙1</span>
+    <span>撞墙2</span>
+    <span>撞墙3</span>
+    <span>撞墙4</span>
+    <span>撞墙5</span>
+    <span>撞墙6</span>
+    <span>撞墙7</span>
+    <span>撞墙8</span>
+    <span>撞墙9</span>
+    <span>撞墙10</span>
+    <span>撞墙11</span>
+    <span>撞墙12</span>
+    <span>撞墙13</span>
+    <span>撞墙14</span>
+    <span>撞墙15</span>
+    <span>撞墙16</span>
+    <span>撞墙17</span>
+    <span>撞墙18</span>
+    <span>撞墙19</span>
+    <span>撞墙20</span>
+    <span>撞墙21</span>
+    <span>撞墙22</span>
+    <span>撞墙23</span>
+    <span>撞墙24</span>
+    <span>撞墙25</span>
+    <span>撞墙26</span>
+    <span>撞墙27</span>
+    <span>撞墙28</span>
+    <span>撞墙29</span>
+    <span>撞墙30</span>
+        <!-- 2.块级元素：一个元素一个元素依次往下流，简称“下流”，为什么下流，因为它独占一行啊
+               对了，得加上一个无耻才行
+        -->
+        <div>块1</div>
+        <div>块2</div>
+        <div>块3</div>
+        <div>块4</div>
+        <div>块5</div>
+        <div>块6</div>
+        <div>块7</div>
+        <div>块8</div>
+        <div>块9</div>
+        <div>块10</div>
+    <!-- 观察到一个现象，就是内联元素流动的时候，汉字被break了，而英文就没有这种情况了 -->
+    <span>渣渣灰</span>
+    <span>滴滴ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp ppppp</span>
+    <span>大哥大</span>
+    <!-- 为什么会这样？浏览器认为你这连写的英文字符是一个单词啊，虽然我目测这不是一个单词，可浏览器就是不管，
+        反正连着就是，不管连着的是否有其它中文字符
+        这涉及到英文单词不可分割性的原则，就像是外国人总喜欢连读一些汉字，如热干面……
+    -->
+    <!-- 如何解决？ -->
+    <!-- 使用word-break属性的break-all值，中文网站推荐使用break-all这个值(粉碎性骨折)，毕竟中文是一个一个字的 -->
+    
+    
+    <!-- 常用的还有一个值是，break-word(这个值跟原来一样的效果) -->
+</body>
+</html>
