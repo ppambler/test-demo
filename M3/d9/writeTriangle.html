@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tixing {
+            border: 20px solid red;
+            width: 20px;
+            height: 20px;
+            border-top-color: black;
+            border-bottom-color: blue;
+            border-left-color: green;
+        }
+        .sanJX {
+            border: 20px solid red;
+            width: 0;
+            height: 0;
+            border-top-color: black;
+            border-bottom-color: blue;
+            border-left-color: green;
+        }
+        .wjx {
+            border: 100px solid transparent;
+            /* 不写也没事，不过最好写上 */
+            width: 0;
+            /* 高度自适应不用写 */
+            /* height: 0; */
+            border-left-color: tomato;
+            border-top-width: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 如何用css写一个三角形？ -->
+    <!-- 首先，先写一个梯形 -->
+    <div class="tixing"></div>
+    <!-- 写这个梯形是告诉你上边长为0，那么这个梯形就变成了三角形了 -->
+    <!-- 四个等腰直角三角形 -->
+    <hr>
+    <hr>
+    <hr>
+    <div class="sanJX"></div>
+    <hr>
+    <hr>
+    <hr>
+    <!-- 想要的三角形,上边框指的是中心点到上面的距离 -->
+    <div class="wjx"></div>
+    
+
+</body>
+</html>

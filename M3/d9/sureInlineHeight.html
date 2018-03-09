@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .one span {
+            font-size: 100px;
+            border: 1px solid yellowgreen;
+        }
+        div.one {
+            border: 1px solid red;
+        }
+        .two span {
+            font-size: 14px;
+            border: 1px solid yellowgreen;
+        }
+        div.two {
+            border: 1px solid red;
+            line-height: 28px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="one">
+        <span>你好Hello!go</span>
+    </div>
+    <!-- 这个div的高度真得是100px吗？ -->
+    <!-- 不是，是134px -->
+
+
+    <!-- 我想要div的高度为100px,注意不能写死div的高度为100px; -->
+    <!-- 当对div设置的line-height:200px时，span里的字体是100px的时候或者字体为14px的时候
+            前者div是236，span134;后者是203,21
+    -->
+    <hr>
+    <div class="two">
+        <span>你好Hello!go</span>
+    </div>
+</body>
+</html>
