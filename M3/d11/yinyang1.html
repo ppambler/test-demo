@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #yinyang {
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid red; */
+            border-radius: 50%;
+            background: linear-gradient(to bottom, #fffcfc 0%, 
+            #fffcfc 0%, #fffcfc 50%, #050505 50%, #050202 100%);
+            position: relative;
+            margin: 200px auto 20px;
+            animation-duration: 3s;
+            animation-name: spin;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        #yinyang::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: 50px;
+            border: 40px solid #000;
+        }
+        #yinyang::after {
+            content: '';
+            width:20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #000;
+            position: absolute;
+            top: 50px;
+            /* left: 100px; */
+            right: 0;
+            border: 40px solid #fff;
+        }
+        body {
+            background-color: silver;
+        }
+        /* 定义动画效果 */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        p {
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body> 
+    <!-- 1.画一个圆200*200 -->
+    <div id="yinyang">
+    </div>
+    <p>「道生一,一生二,二生三,三生万物」</p>
+</body>
+
+</html>

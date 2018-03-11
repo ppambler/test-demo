@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .two::before {
+            content: '';
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.什么叫伪类？不是空标签即有伪类 -->
+    <!-- 比如div -->
+    <!-- 通过控制台察觉 -->
+    <div class="one">因为选择器的缘故的，没有察觉到伪类的存在</div>
+    <div class="two">添加::before和::after且需要给上content,可察觉伪类的存在</div>
+    <!-- 这个::before叫做伪元素，不是真正的元素，就像是个span元素 -->
+</body>
+</html>
