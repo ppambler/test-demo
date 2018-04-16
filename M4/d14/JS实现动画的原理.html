@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        #div {
+            width: 200px;
+            height: 100px;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <div id="div1"></div>
+    </div>
+    <script>
+        // 什么叫动画？可以在1s呈现24张图片，这样肉眼看起来就是会动的
+        div1.style.position = "relative"
+        div1.style.left = 0
+
+        // 我很好奇为啥n的值一直存在，照理说函数执行完一次，局部变量应该被销毁才对啊
+        // 难道是闭包吗？
+        // 这里的操作是，在0.04s之内完成一帧，25帧/1s，一帧1px,需要200帧，即200/25=8s完成整个动画
+        // 一块静止魔法石（div1）在上帝的操控（JS程序）下，运动了
+        // 难道所谓的动？即是元素产生了位移变化吗？
+        var n = 0;
+        var id = setInterval(() => {
+            n = n + 1
+            div1.style.left = n + 'px'
+            if (n >= 25) {
+                // 这是一个套路，一旦满足条件就把闹钟给砸了
+                window.clearInterval(id)
+                // 如果后面有计算可以加上return
+                // return
+            }
+        }, 40)
+        console.log(id)
+    </script>
+</body>
+
+</html>
