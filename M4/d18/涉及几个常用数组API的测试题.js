@@ -12,6 +12,8 @@ students.sort((x,y) => scores[y] - scores[x])
 
 
 // 2.
+// 获取所有偶数
+// 得到所有偶数的平方
 var a = [1,2,3,4,5,6,7,8,9]
 // a.filter(???).map(???) // [4,16,36,64]
 a.filter(value => value % 2 === 0).map(value => value*value)
@@ -20,6 +22,7 @@ a.filter(value => value % 2 === 0).map(value => value*value)
 // 3.
 // var a = [1,2,3,4,5,6,7,8,9]
 // a.reduce(???,???)
+// 计算所有奇数的和
 
 // a.filter(value => value % 2 !== 0).reduce((sum,n) => sum+n , 0)
 
@@ -31,3 +34,18 @@ a.reduce(
         return arr
     },[]
 ).reduce((sum,n) => sum+n , 0)
+// 根据第二个参数判断返回的是什么，如第一个是数组，那么它就可以数组的API
+// 第二个reduce的第二个参数是0，那么最终的返回值就是一个数值了
+
+// 这道题只用两个参数真得可以搞定吗？
+// 真的可以呀！关键在于，reduce的第一个参数函数，可有4个参数哦
+// 真的很难受啊！做这道题思考了20min
+a.reduce(function (sum,n,index,arr) {
+    if(sum===0) {
+        let ar = arr.filter(value => value % 2 === 0)
+        let sum1 = ar.reduce((sum1,n1) => sum1+n1,0 )
+        return sum+n-sum1
+    } else {
+        return sum+n
+    }
+},0)
