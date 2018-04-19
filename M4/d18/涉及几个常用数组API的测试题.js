@@ -54,3 +54,13 @@ a.reduce(function (sum,n,index,arr) {
         return sum+n
     }
 },0)
+
+// 我似乎把问题给弄复杂了啊
+// 这里主要弄明白n的含义即可，不管是减去还是不加，都是一种方向，只不过后者
+// 明显更快达到目的地
+a.reduce(function (sum,n,index,arr) {
+    if(n%2 === 0) {
+        n = 0
+      }
+        return sum+n
+},0)
