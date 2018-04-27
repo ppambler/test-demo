@@ -23,6 +23,7 @@
     <div>我是4div</div>
     <div>我是5div</div>
     <p>我是p标签里的文本</p>
+    <span id='s'>我是span</span>
     <script>
         window.jQuery = function (nodeOrSelector) {
             let nodes = {}
@@ -63,7 +64,11 @@
         var $p = $('p')
         $p.addClass('green')
         $p.setText('SB')
-
+        
+        var s = document.getElementById('s')
+        var $span = $(s)
+        $span.addClass('green')
+        $span.setText('我是覆盖的span的文本')
 
     </script>
 </body>
