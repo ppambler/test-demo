@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .yellow {
+            color: yellow;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .yellowgreen {
+            color: yellowgreen;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>第1项数</li>
+        <li>第2项数</li>
+        <li id='item3'>第3项数</li>
+        <li>第4项数</li>
+        <li>第5项数</li>
+    </ul>
+    <button id='x'>X</button>
+    <button id='y'>Y</button>
+
+    <script>
+        var nodes = jQuery('ul>li')
+        console.dir(nodes)
+        var dd = jQuery()
+        console.dir(dd)
+
+        var item3 = jQuery('#item3')
+        console.dir(item3)
+        item3[0].classList.add('blue')
+
+        // item3.addClass('red')
+        // item3.removeClass('red')
+
+        item3.removeClass('blue').addClass('red')
+        item3.removeClass('red')
+
+        x.onclick = function () {
+            item3.toggleClass('yellow')
+        }
+
+        var classes = ['blue', 'red', 'yellow', 'green', 'yellowgreen']
+
+        y.onclick = function () {
+            nodes.addClass(function (index, currentClass) {
+                return classes[index]
+            })
+        }
+
+        let nod = document.querySelectorAll('ul>li')
+        console.dir(nod)
+    </script>
+</body>
+
+</html>
