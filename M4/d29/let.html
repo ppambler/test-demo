@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="alert">Hello!World</div>
+    <div id="x">我是「x」</div>
+
+    <div id="abcdefg">我是「abcdefg」</div>
+    <script>
+        var xHtml = x.textContent
+        var alertHtml = alert.textContent
+        console.log(xHtml)
+        console.log(alertHtml)
+
+        console.dir(window)
+
+        var alertDom = document.getElementById('alert')
+        console.log(alertDom)
+
+        var alertDom1 = document.querySelector('#alert')
+        console.log(alertDom1)
+
+
+        // var alert = document.getElementById('alert')
+        // console.log(alert)
+        // alert('你能看到我吗？')
+
+        function y() {
+            var alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+        y()
+        console.log(window.alert)
+
+            (function () {
+                var alert = document.querySelector('#alert')
+                console.log(alert)
+            })()
+            (function () {
+                var alert = document.querySelector('#alert')
+                console.log(alert)
+            }())
+
+
+        // var的姿势：
+        {
+            var alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+        // 等价于：
+        var alert
+        {
+            alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+
+        //let的姿势：
+        {
+            let alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+        
+        {
+            let a = 1
+        }
+        // console.log(a)//a is not defined 
+
+        let b = 2
+        {
+            let b = 3
+        }
+        console.log(b)//2
+    </script>
+</body>
+
+</html>

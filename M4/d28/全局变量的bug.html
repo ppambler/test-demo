@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent"></div>
+    <div id="x"></div>
+    <div id="alert"></div>
+    <div id="self"></div> 
+    <script>
+        // 1.你以为parent跟「x」一样吗？你可以用x得到这个元素，可是你用parent
+        // 就不可以了。因为parent是window旗下的全局属性
+        // 这意味着window旗下的所有属性，你都不能这样用
+        console.log(x)
+        console.log(parent)
+
+        // 结论一：全局变量可耻，不能用，如你不能通过alert得到id为「alert」的元素
+        console.log(alert)
+        // 平时用x/y等避开了window的属性，才能通过id直接拿到对应的元素
+
+        // 2.我想要使用，id值与window的某个属性值一致的名字，如self
+        // 如何避免冲突呢？原始办法
+        var selfDiv = document.querySelector('#self')
+        console.log(selfDiv)
+
+        // 如果我把这个「selfDiv」改为「parent」呢？
+        // 结果你还是能得到「#self」这个元素，可是你就把window的全局属性parent的值给覆盖了啊
+        // parent原本的值是「父窗口，如果没有父窗口就是当前窗口」
+        // 所以不管你怎么用全局属性都是很可耻
+
+        // 如何解决？
+        // 推论一：不用全局变量了，我讨厌跟window的属性打架，于是用局部变量，只好把它弄到函数内了
+        // 测试id为alert
+        function y() {
+            var alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+        y()
+        console.log(window.alert)
+        // 可见全局的alert依旧是它，同时我们也得到了想要的alert值，即这个#alert元素
+
+        // 推论一：最好不要用全局变量；推论二：我们可以用局部变量
+        // 声明一个函数，然后立即调用这个函数
+
+        // 关于立即执行函数，你看「y」它不也是个全局变量吗？跟推论一矛盾了
+        // 于是去掉函数名：得到立即执行函数，可以「()」和「.call()」，这是推论三
+
+        // function() {
+        //     var alert = document.querySelector('#alert')
+        //     console.log(alert)   
+        // }()
+
+        // 推论三报语法错误了，虽然我们觉得不是，可是chrome就认为是了，于是得到推论四
+        // 如何让傻逼浏览器认为我们是对的，不要再报错了
+        // 方法一：这个加括号的，老师的没有报错，我的就报错了……
+
+        // ( function() {
+        //     var alert = document.querySelector('#alert') 
+        //     console.log(alert)
+        // }.call() )
+
+        // 第二种：我的又报错了
+        // (function(){
+        //     var alert = document.querySelector('#alert') 
+        //     console.log(alert)
+        // }).call() 
+
+        // 第3种：告诉浏览器，我求的是值，不要语法报错 ……这个可以
+        -function(){
+            var alert = document.querySelector('#alert') 
+            console.log(alert)
+        }.call() 
+
+         +function(){
+            var alert = document.querySelector('#alert') 
+            console.log(alert)
+        }.call() 
+
+        // 用乘号不行，毕竟乘号必须要有两个算子，而+-则可认为是正负号，可以单算子
+
+        // 还有其它符号也行，波浪号「~」二进制的取反，常用的取反感叹号「！」都行，只要你能通过某种方式触发，
+        // 告诉浏览器后面这个不是声明，而是立即执行函数，那么浏览器就不会报语法错误了
+        !function(){
+            var alert = document.querySelector('#alert') 
+            console.log(alert)
+        }.call() 
+        ~function(){
+            var alert = document.querySelector('#alert') 
+            console.log(alert)
+        }.call() 
+        
+        // 可见JavaScript很奇葩，为了使用局部量，需要搞个函数，然后还要匿名，还要立即执行，立即执行报语法错误，
+        // 于是，还得告诉浏览器我这个是立即执行函数
+
+
+        // 由于这种情况，于是JavaScript升级了
+        // 1.理论上，在JavaScript眼中，demo块是没有作用域的，但是升级了，就有作用域了
+        // 这个作用域的有无，是「let」和「var」决定的
+        // let是有的，而var则无视
+
+        // var的姿势：
+        {
+            var alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+        // 等价于：
+        var alert
+        {
+            alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+        //所以这个alert还是会跑出去，成为一个全局变量，把window的alert给覆盖了
+        // 即块是包不住var的，只有立即函数才行
+
+        // let的姿势：let也不会提升，在哪声明就在哪声明，不会变量提升
+        // 能认识这个let只要在这个块里面了，出了这个块就没人认识它了
+        {
+            let alert = document.querySelector('#alert')
+            console.log(alert)
+        }
+        
+        {
+            let a = 1
+        }
+        // console.log(a)//a is not defined 
+
+        let b = 2
+        {
+            let b = 3
+        }
+        console.log(b)//2
+
+        // ES6之前想要用局部变量，只好用立即执行函数了，ES6出来后就，不需要了，毕竟有let这个神器
+
+        // 以上讨论为全局变量和立即执行函数的撕逼 
+
+        
+    </script>
+</body>
+
+</html>
