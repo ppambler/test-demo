@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        .images {
+            display: flex;
+            align-items: flex-start;
+            transition: all 0.5s;
+        }
+
+        .images>img {
+            vertical-align: top;
+        }
+
+        .window {
+            width: 284px;
+            overflow: hidden;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 搞4张图片 -->
+    <div class="window">
+        <div class="images" id=images>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5W5k8pZ4VXyZsIhTEXwtO-P3LmxCEJAlqG74onj4GGXTiMetE1A" alt=""
+                width=284 height=177>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ANas9lOWusFru_yrCZ_xHovfxR5saXyrYW0kbKg3jCTe2tMeNQ" alt=""
+                width=284 height=177>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwXu4i_F3GwAt0P7KtTnSDqjpqaB6xl_v7WzydZY_81moLH2sv" alt=""
+                width=284 height=177>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoGY1n-T9rTSlUHY3XA6Brmv1mWJMHqV7RVD5hLWrMP0ImpS29-Q" alt=""
+                width=284 height=177>
+        </div>
+    </div>
+
+    <span id='buttons'>
+        <span>第1张</span>
+        <span>第2张</span>
+        <span>第3张</span>
+        <span>第4张</span>
+    </span>
+    <!-- <script>
+        // 拿到数据结构，伪数组
+        var allButtons = $('#buttons > span')
+
+        // 遍历这个家伙，为其旗下的每个元素都绑定一个点击事件
+        for (let i = 0; i < allButtons.length; i++) {
+            $(allButtons[i]).on('click', function (x) {
+                // 拿到用户点击的那个元素，虽然target也能做到，但这是在没有事件委托的情况下
+                // index()得到当前元素排行老几，这是其父元素的范围
+                var index = $(x.currentTarget).index()
+                console.log(index)
+                // 动态生成平移的值
+                var p = index * -284
+                $('#images').css({
+                    transform: 'translate(' + p + 'px)'
+                })
+
+                // 解决点击事件与自动播放的冲突
+                n = index
+                allButtons.eq(n)
+                    .addClass('red')
+                    .siblings('.red').removeClass('red')
+            })
+        }
+
+        // 实现自动播放，取余很关键
+        // eq()可以根据参数找出对应的DOM，并封装为jQuery对象
+        // trigger(),触发()中的事件参数，如点击事件
+        var n = 0;
+        // 拿到按钮个数
+        var size = allButtons.length
+        allButtons.eq(n % size).trigger('click')
+            .addClass('red')
+            .siblings('.red').removeClass('red')
+
+        var timeId = setInterval(() => {
+            n += 1
+            allButtons.eq(n % size).trigger('click')
+                .addClass('red')
+                .siblings('.red').removeClass('red')
+        }, 1000)
+
+        // 鼠标移进某个元素，就砸闹钟
+        $('.window').on('mouseenter', function () {
+            window.clearInterval(timeId)
+        })
+
+        // 鼠标移出，就添加闹钟
+        $('.window').on('mouseleave', function () {
+            timeId = setInterval(() => {
+                n += 1
+                allButtons.eq(n % size).trigger('click')
+                    .addClass('red')
+                    .siblings('.red').removeClass('red')
+            }, 3000)
+        })
+
+        
+    </script> -->
+    <script src="./优化demo.js"></script>
+</body>
+
+</html>
