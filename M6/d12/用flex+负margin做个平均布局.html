@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 750px;
+            margin: 20px auto;
+        }
+
+        ul>li {
+            background: #ddd;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /*上面的代码不准动，请在下面写代码*/
+
+        .wrapper>ul li {
+            width: calc(25% - 10px);
+            margin-right: 5px;
+            margin-left: 5px;
+
+        }
+        
+        /* 可以把这个当作是多余的div */
+        .wrapper>ul {
+            /* outline: 1px solid red; */
+            margin-left: -5px;
+            margin-right: -5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </div>
+</body>
+
+</html>

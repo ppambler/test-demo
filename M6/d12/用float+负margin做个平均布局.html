@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 750px;
+            margin: 20px auto;
+            /* 添加这个overflow就知道为啥要用负margin了，主要是保持左右两个盒子的
+                的左margin没有空隙，而右margin也没有空隙
+             */
+            /* overflow: hidden; */
+        }
+
+        ul>li {
+            background: #ddd;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /*上面的代码不准动，请在下面写代码*/
+
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+        .wrapper>ul li {
+            float: left;
+            width: calc(25% - 10px);
+            margin-right: 5px;
+            margin-left: 5px;
+
+        }
+
+        .wrapper>ul {
+            outline: 1px solid red;
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="clearfix">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </div>
+</body>
+
+</html>
