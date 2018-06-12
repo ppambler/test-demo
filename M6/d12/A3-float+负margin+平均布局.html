@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 750px;
+            margin: 20px auto;
+        }
+
+        ul>li {
+            background: #ddd;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /*上面的代码不准动，请在下面写代码*/
+
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .wrapper {
+            background: #888;
+        }
+
+        ul {
+            margin: 0 -5px;
+            outline: 1px solid red
+        }
+
+        ul>li {
+
+            float: left;
+
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 180px;
+            line-height: 24px;
+            padding: 6px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="clearfix">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+        </ul>
+    </div>
+</body>
+
+</html>
