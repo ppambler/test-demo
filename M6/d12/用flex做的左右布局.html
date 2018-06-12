@@ -40,7 +40,10 @@
 
         .header>.nav li {
             border: 1px solid green;
-            width: calc(33.33333333333333%);
+            /* 老师的话：用了flex就不用calc了，完全可以用flex布局来做了 */
+            /* width: calc(33.33333333333333%); */
+            /* 上面这个可以用flex来做，如： */
+            flex-grow: 1;
             line-height: 32px;
             text-align: center;
 
