@@ -32,7 +32,7 @@
 
 
         body {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             min-height: 100vh;
             /* 使用flex,绝对居中 */
             display: flex;
@@ -41,7 +41,7 @@
         }
 
         .wrapper {
-            border: 1px solid green;
+            /* border: 1px solid green; */
             
         }
         .inputWrapper {
@@ -74,6 +74,27 @@
         }
         .suggestion {
             display: none;
+        }
+
+
+        /* 细节1.搞边框和颜色 */
+
+        .inputWrapper input[type=text] {
+            border: 1px solid #cccccc;
+            /* 固定输入框的大小 */
+            width: 536px;
+            height: 40px;
+            /* 即使看上去没啥效果也要加上去，这意味这文字一定是垂直居中的 */
+            line-height: 40px;
+            /* 内容左边距 */
+            padding-left: 8px;
+            /* 光标由字体大小？行高？决定，不知道试出来行就行呗 */
+            font-size: 15px;
+        }
+        .inputWrapper input[type=text]:focus {
+            /* 去掉focus输入框变蓝的现象 */
+            outline: none;
+            border-color: #3388ff;
         }
     </style>
 </head>
