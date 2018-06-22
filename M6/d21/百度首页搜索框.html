@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="//at.alicdn.com/t/font_716289_mkdj2pzc1r.js"></script>
     <style>
         * {
             margin: 0;
@@ -30,6 +31,13 @@
             list-style: none;
         }
 
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
 
         body {
             /* border: 1px solid red; */
@@ -42,8 +50,24 @@
 
         .wrapper {
             /* border: 1px solid green; */
-            
+            /* 使用flex,毕竟align-items的默认值是stretch即，即默认跟最高的item一样高 */
+            display: flex;
+            position: relative;
         }
+        .suggestion {
+            display: none;
+            position: absolute;
+            top:100%;
+            left: 0;
+        }
+        .suggestion.active {
+            display: block;
+            border: 1px solid #cccccc;
+            padding-left: 8px;
+            border-top-width: 0;
+            width: 536px;
+        }
+
         .inputWrapper {
             position: relative;
             /* 不添加这个的话，你会发现floatdiv溢出了，即没有右对齐 */
@@ -51,6 +75,7 @@
             /* 或者说因为这个空隙作为了这个元素一部分内容，其实浮动起来也可以解决 */
             display: inline-block;
         }
+
         .floatDiv {
             /* 使用了绝对定位，那么xy就会原地脱离文档流，那么其
                 位置就会被下一个文档流元素给占据了位置
@@ -59,6 +84,21 @@
             /* border: 1px solid green; */
             right: 0;
             top: 0;
+            height: 100%;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            color: #b8b8b8;
+        }
+         /* 那个分割线，可不是图片哦 */
+         .splitLine {
+            width: 0;
+            height: 16px;
+            border-left: 1px solid;
+            /* 调整距离 */
+            margin: 0 10px;
         }
 
         /* 这两个浮动用于去掉两个元素的空隙，千万不要想着在html-demo里去掉
@@ -66,17 +106,36 @@
             这里即便浮动也不需要清除浮动，为什么？ 
             因为它爸爸是自带BFC的，因为爷爷是flex
          */
+
         .inputWrapper {
             float: left;
         }
-        .inputWrapper + button {
+
+        .inputWrapper+button {
             float: left;
         }
-        .suggestion {
-            display: none;
+
+        .inputWrapper + button {
+            /* button中的字默认会垂直居中 */
+            background: #3388ff;
+            /* 去掉button默认的边框 */
+            border: none;
+            font-size: 15px;
+            color: white;
+            padding: 0 20px;
         }
-
-
+        
+        /* 去掉button,focus有个轮廓 */
+        .inputWrapper + button:focus {
+            outline: none;
+        }
+        
+        /* hover button背景色变化和出现阴影 */
+        .inputWrapper + button:hover {
+            box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+            background: #317ef3;
+            
+        }
         /* 细节1.搞边框和颜色 */
 
         .inputWrapper input[type=text] {
@@ -91,11 +150,24 @@
             /* 光标由字体大小？行高？决定，不知道试出来行就行呗 */
             font-size: 15px;
         }
+
         .inputWrapper input[type=text]:focus {
             /* 去掉focus输入框变蓝的现象 */
             outline: none;
             border-color: #3388ff;
         }
+
+        .inputWrapper svg.icon {
+            width: 20px;
+            height: 20px;
+            fill: #b8b8b8;
+        }
+        .inputWrapper svg.icon:hover {
+            fill: #3388ff;
+            cursor: pointer;
+        }
+        
+     
     </style>
 </head>
 
@@ -103,23 +175,38 @@
     <div class="wrapper">
         <!-- 添加这个盒子的缘故在于解决无法确定元素之间的空隙宽度 -->
         <span class="inputWrapper">
-            <input type="text" name="" id="">
+            <input type="text" name="" id="keyword" autocomplete="off">
             <!-- 放到一個盒子里去，一起移動到輸入框裡面去，用span的缘故在于不会另起一行-->
             <!-- 为了方便布局是可以在原先的基础上添加标签的 -->
 
             <span class="floatDiv">
-                <button>x</button>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-microphoneicon"></use>
+                </svg>
                 <span class="splitLine"></span>
-                <button>y</button>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-paizhao"></use>
+                </svg>
             </span>
         </span>
         <button>百度一下</button>
-        <ul class="suggestion">
+        <!-- 写JavaScript的时候才添加id -->
+        <ul id='suggestion' class="suggestion">
             <li>选项1</li>
             <li>选项2</li>
             <li>选项3</li>
         </ul>
     </div>
+    <script>
+        keyword.oninput = function(e) {
+            // 变量只用一次的话，那就不要用变量了
+            if(keyword.value) {
+                suggestion.classList.add('active')
+            } else {
+                suggestion.classList.remove('active')
+            }
+        }
+    </script>
 </body>
 
 </html>
