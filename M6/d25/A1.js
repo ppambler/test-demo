@@ -7,7 +7,7 @@ window.$ = window.jQuery
 // 参数值用了ES6语法——解构赋值
 window.jQuery.ajax = function ({url,method,body,successFn,failFn,headers}) {
     // 请记住下面这行，请记住我……虽然再见必须说……请记住我……眼泪不要坠落……
-    return new Promise(function(resove,reject) {
+    return new Promise(function(resolve,reject) {
         let request = new XMLHttpRequest()
         request.open(method, url)
         // 遍历头
