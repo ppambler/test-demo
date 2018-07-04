@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./vendor/prism/prism.css">
+</head>
+
+<body>
+    <pre id="demo"></pre>
+    <script src="./vendor/prism/prism.js"></script>
+    <script>
+        // The code snippet you want to highlight, as a string
+        var code = "var data = 1;";
+
+        // Returns a highlighted HTML string
+        var html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
+        console.log(html)
+        var result = `${html}`
+        // debugger
+        var n = 0
+        var id = setInterval(() => {
+            n += 1
+            demo.innerHTML = result.substring(0, n)
+            console.log(`第${n}轮`)
+            if (n >= result.length) {
+                window.clearInterval(id)
+            }
+        }, 10)
+    </script>
+</body>
+
+</html>
