@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div id="code"></div>
+    <div id="demo"></div>
+    <hr>
+    <p>
+            如果没有传回调函数,那么你直接这样「fn()」写的话，那么这
+            <br>会报错的。不过你这样写「fn && fn()」就不会了
+            <br>当然这仅仅是针对你有没有传参数
+            <br>那么为什么会这样呢？这是做了短路运算啊，如果第一个是undefined那么就
+            <br>不会去执行下一遍，毕竟第一次就是falsy值，为此就返回这个值，而不会去调用
+            <br>这个所谓的「undefined」函数
+            <br>还有一点是我没有想到的：
+            <br>它们各自都执行了666，然后执行异步任务，它们像是多线程一样
+            <br>同时执行2个异步任务，即在屏幕显示输入是同时输入的
+            
+    </p>
+    <script>
+    function xxx(selector,text,fn) {
+        // debugger
+        var code = document.querySelector(selector)
+        var n = 0
+        console.log('666')
+        var id = setInterval(()=>{
+            n += 1
+            code.innerHTML = text.substring(0,n)
+            if(n == text.length){
+                window.clearInterval(id)
+                fn && fn()
+            }
+        },100)
+    }
+    xxx('#code','Hello!world',()=>{
+        console.log('我传了回调函数，你奈我何???')
+    })
+    xxx('#demo','我不传回到函数，你又奈我何？？？',)
+    </script>
+</body>
+</html>
