@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        打印结果是123455
+        可见调用函数的时候是进去函数里面的，然后遇到异步任务就不等待
+        结果，打印了3然后接下去打印4了，再回头去执行这个setInterval()
+        不是说这个函数xxx里存在异步任务，就是这个xxx是异步任务
+        而是里面那个东西才是异步任务，不然的话，123是不会打印的
+     -->
+</head>
+<body>
+    <script>
+        function xxx() {
+            console.log('1')
+            console.log('2')
+            var n = 0
+            var id = setInterval(()=>{
+                console.log('5')
+                n += 1
+                if(n == 2) {
+                    window.clearInterval(id)
+                }
+            },100)
+            console.log('3')
+        }
+        xxx()
+        console.log('4')
+    </script>
+</body>
+</html>
