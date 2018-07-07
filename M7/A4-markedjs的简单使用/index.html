@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.getElementById('content').innerHTML =
+            marked(
+                `
+# 自我介绍
+
+我叫 唐小桃
+广东轻工职业技术学院毕业
+自学前端半年
+希望应聘前端开发岗位
+
+# 技能介绍
+
+熟悉 JavaScript
+
+# 项目介绍
+
+1. 不完全仿苹果轮播
+2. 会动的简历
+3. 简单的画板
+
+# 联系方式
+QQ 1134720895
+Email 13790020331@163.com
+手机 13790020331
+`
+            );
+    </script>
+</body>
+
+</html>
