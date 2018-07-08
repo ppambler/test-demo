@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output"></div>
+    <div id="output1"></div>
+    <hr>
+    <p>
+        <br>所有的setInterval都可以用setTimeout来模拟
+        <br>模拟setInterval行为的setTimeout就像是延时递归一样，这样就解决了只执行一次问的问题
+        <br>别忘了你需要的不是匿名函数，而是一个有名字的，而且连clearid也不用了,毕竟默认就是执行一次
+        <br>就不执行了
+        <br>clear存在的意义在于是否多次执行这个函数
+        <br>还有一点就是这个函数是不接收参数的，如果，需要的话，则作为setTimeout()的形参传入
+        <br>不过写上clearid是个好习惯,万一需要清楚setTimeout的ID呢
+    </p>
+    <script>
+        let n = 0 
+        let id = setInterval(()=>{
+            n+=1
+            output.innerText = n
+            if(n>=10) {
+                window.clearInterval(id)
+            }
+        },500)
+
+        let i = 0 
+        setTimeout(function fn(){
+            i+=1
+            output1.innerText = i
+            if(i<10) {
+               setTimeout(fn,500)
+            }
+        },500)
+    </script>
+</body>
+</html>
