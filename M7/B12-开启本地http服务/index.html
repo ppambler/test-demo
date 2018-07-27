@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>为啥开启了http服务，可以不为静态资源写路由，就能拿到资源呢？</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <p>任何请求都需要写路由吗？为啥我请求这个main.css可以不写路由就能拿到这个资源呢？</p>
+    <p>由于插件过多，会加载多余的东西，所以用隐身窗口打开来测试</p>
+    <p>我用了ftp协议打开这个这个页面，发现这真得很有意思啊</p>
+    <p>之前一直是用http协议的</p>
+    <p>我只能猜测了：如果这些资源文件不写路由的话，默认就会根据请求路径找资源。然而我们却可以写个路由，用于
+        <br>迷惑他人，如请求的是css文件但是响应回去的却是js文件……
+    </p>
+</body>
+</html>
