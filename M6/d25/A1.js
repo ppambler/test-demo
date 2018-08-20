@@ -5,7 +5,7 @@ window.jQuery = function () {
 window.$ = window.jQuery
 
 // 参数值用了ES6语法——解构赋值
-window.jQuery.ajax = function ({url,method,body,successFn,failFn,headers}) {
+window.jQuery.ajax = function ({url,method,body,headers}) {
     // 请记住下面这行，请记住我……虽然再见必须说……请记住我……眼泪不要坠落……
     return new Promise(function(resolve,reject) {
         let request = new XMLHttpRequest()
@@ -34,18 +34,10 @@ myButton.addEventListener('click', (e) => {
     window.jQuery.ajax({
             url: '/xxx',
             method: 'get',
+            body: undefined,
             headers: {
                 'content-type': 'application/x-www-form-urlencoded',
                 'gg': 'good game'
-            },
-            successFn: (x) => {
-                f1.call(undefined, x)
-                f2.call(undefined, x)
-            },
-            failFn: (x) => {
-                console.log(x)
-                console.log(x.status)
-                console.log(x.responseText)
             }
         }
     ).then(
