@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript" src="b.js" defer></script>
+  <script type="text/javascript" src="a.js" async></script>
+
+  <script type="text/javascript">
+      console.log('我是script元素中的脚本')
+  </script>
+  这是a在b前的结果，**✎：** <br>
+  chrome的测试结果是，本地→☞b.js(defer)→☞a.js(async)；<br>
+  firefox的则是，本地→☞a.js→☞b.js
+  <br>
+  而a在b后的结果呢？**✎：** <br>
+  chrome还是一样
+  而firefox则是跟chrome一样！
+  <p>我是最后一个元素，听说defer没有等我就执行了</p>
+</body>
+</html>
